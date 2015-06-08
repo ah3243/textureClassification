@@ -99,7 +99,7 @@ for (int i = 0; i < 40; i++) {
   imshow(window_name3, kernel_gab);
   imshow("Gabor Filter", output);
 
-  imgDir.assign("../savImgs/GaborImg23.png");
+  imgDir.assign("../savImgs/GaborImg105.png");
 
   imwrite(imgDir, output);
 
