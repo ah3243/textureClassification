@@ -85,10 +85,9 @@ int main(int argc, char** argv) {
 /*Gabor Filters*/
 src.convertTo(src_gab, CV_32F);
 
-string imgDir ="";
-
 for (int i = 0; i < 40; i++) {
   double th = i;
+
   // Print out theta conv to int
   cout << "This is the theta number " << th << endl;
 
@@ -98,12 +97,7 @@ for (int i = 0; i < 40; i++) {
   // Display Kernel
   imshow(window_name3, kernel_gab);
   imshow("Gabor Filter", output);
-
-  imgDir.assign("../savImgs/GaborImg103.png");
-
-  imwrite(imgDir, output);
-
-  waitKey();
+  waitKey(10);
 }
 
   return 0;
