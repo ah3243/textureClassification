@@ -21,7 +21,7 @@ using namespace std;
 /*Gabor filter globals*/
 int kernelSize = 21;
 double sigma = 10, theta = 1, lambd = 20, gm = 0, psi = 0;
-cv::Mat dst, dst1, dst_gab, src, src_gab, in, output, kernel, kernel_gab;
+cv::Mat dst, dst1, dst_gab, src, src_gab, input, in, output, kernel, kernel_gab;
 
 // Gabor filter function
 void process(double angle, void *) {
@@ -42,20 +42,29 @@ int main(int argc, char** argv) {
   const char *window_name3 = "GaborFilters";
 
   // Load image in grayscale
-  src = imread(argv[1], CV_LOAD_IMAGE_GRAYSCALE);
+  input = imread(argv[1], CV_LOAD_IMAGE_COLOR);
 
-  // Check that data is read in correctly
-  if (!src.data) {
+  // Check that data is read in
+  if (input.empty()) {
+    cout << "the input image was unable to be read" << endl;
     return -1;
   }
+
+  cvtColor(input, input, CV_BGR2GRAY);  // convert color img to grayscale
 
   // Create a named window
   namedWindow(window_name1, WINDOW_AUTOSIZE);
 
-
   /* Shows original image*/
   const char *window_name = "Source image";
+  imshow(window_name, input);
+
+  waitKey();
+
+  equalizeHist(input, src);  // Equalise the input image, save in src
+
   imshow(window_name, src);
+  waitKey();
 
   // // Initialise filter arguments
   // anchor = Point(-1, -1);
