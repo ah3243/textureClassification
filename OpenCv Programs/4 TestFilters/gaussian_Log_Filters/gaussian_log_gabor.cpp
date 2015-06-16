@@ -32,7 +32,6 @@ void process(double angle, void *) {
 
 
 int main(int argc, char** argv) {
-
   // Create variables
   Point anchor;
   double delta;
