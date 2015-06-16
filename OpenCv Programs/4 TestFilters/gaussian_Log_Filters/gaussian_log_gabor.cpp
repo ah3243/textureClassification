@@ -18,17 +18,17 @@ using namespace cv;
 using namespace std;
 
 
-/*Gabor filter globals*/
+// Global variables
 int kernelSize = 21;
 int imgCount = 0;
 cv::Mat src, dst, dst1, dst2, input;
 
-// Gabor filter function
-void process(int x, int y) {
-  GaussianBlur(src, dst2, Size(), x, y, BORDER_DEFAULT);
-}
+// Apply Edge/Bar filter
+void process(int x, int y);
 
+// Save images to folder
 int saveImg(Mat img, string imgType);
+
 
 int main(int argc, char** argv) {
   // Create variables
@@ -122,6 +122,10 @@ int main(int argc, char** argv) {
   }
 
   return 0;
+}
+
+void process(int x, int y) {
+  GaussianBlur(src, dst2, Size(), x, y, BORDER_DEFAULT);
 }
 
 int saveImg(Mat img, string imgType) {
